@@ -24,6 +24,9 @@ updates:
       # Ignore major version updates for Angular (manual review required)
       - dependency-name: "@angular/*"
         update-types: ["version-update:semver-major"]
+      # Ignore major version updates for Tailwind CSS (v4 not compatible with Angular Build)
+      - dependency-name: "tailwindcss"
+        update-types: ["version-update:semver-major"]
     groups:
       angular:
         patterns:

@@ -1,174 +1,229 @@
-# 🏔️ Naar & Noor
+# 🏔️ Naar & Noor (نار ونور)
 
 <div align="center">
 
 ![Angular](https://img.shields.io/badge/Angular-17.0-DD0031?style=for-the-badge&logo=angular)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.2-3178C6?style=for-the-badge&logo=typescript)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.0-38B2AC?style=for-the-badge&logo=tailwind-css)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.5-3178C6?style=for-the-badge&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)
+![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel)
 
-**A premium Himalayan restaurant website with modern design and seamless user experience**
+**Premium Himalayan Restaurant Website - Authentic Mountain Cuisine in Egypt**
 
-[Live Demo](#) • [Documentation](./docs) • [Report Bug](#) • [Request Feature](#)
+[🌐 Live Demo](https://naar222noor.vercel.app) • [📚 Documentation](./docs) • [🐛 Report Bug](https://github.com/Mostafa-SAID7/Naar-Noor/issues) • [✨ Request Feature](https://github.com/Mostafa-SAID7/Naar-Noor/issues)
 
 </div>
 
 ---
 
-## 📋 Table of Contents
+## 🎯 About Naar & Noor
 
-- [About](#about)
-- [Features](#features)
-- [Quick Start](#quick-start)
-- [Documentation](#documentation)
-- [Technologies](#technologies)
-- [Contributing](#contributing)
-- [License](#license)
+Naar & Noor is a modern, high-performance restaurant website showcasing authentic Himalayan cuisine. Built with Angular 17 standalone components and optimized for the Egyptian market with bilingual SEO support.
 
-## 🎯 About
+### 🌟 Key Highlights
 
-Naar & Noor is a modern, responsive restaurant website built with Angular 17 standalone components. It showcases authentic Himalayan cuisine with a focus on user experience, performance, and SEO optimization.
-
-### Key Highlights
-
-- ⚡ **Lightning Fast** - Optimized for performance with lazy loading and code splitting
-- 📱 **Fully Responsive** - Seamless experience across all devices
-- 🎨 **Modern Design** - Dark theme with elegant animations
-- 🔍 **SEO Optimized** - Complete meta tags, structured data, and sitemap
+- ⚡ **Lightning Fast** - Optimized bundle size (2.3MB assets) with lazy loading
+- 📱 **Fully Responsive** - Seamless experience across all devices  
+- 🎨 **Modern Design** - Dark theme with elegant animations and custom components
+- 🔍 **SEO Optimized** - Bilingual meta tags (English/Arabic) with Schema.org structured data
+- 🌐 **PWA Ready** - Progressive Web App with offline capabilities
 - ♿ **Accessible** - WCAG compliant with keyboard navigation support
-- 🌐 **PWA Ready** - Progressive Web App capabilities
 
-## ✨ Features
-
-### Core Features
-- 🎬 **Video Hero Section** - Immersive background video with overlay
-- 🌌 **Animated Background** - Spline 3D interactive background
-- 📅 **Custom Calendar** - Date picker for reservations
-- 🎯 **Custom Dropdowns** - Styled select components
-- 📱 **Mobile Menu** - Responsive navigation with smooth animations
-- 🍽️ **Menu Display** - Dynamic menu items with categories
-- 👨‍🍳 **Chef Profiles** - Team showcase section
-- ⭐ **Customer Reviews** - Testimonials carousel
-- 📍 **Location Info** - Interactive location cards
-- 📝 **Blog Section** - Latest news and updates
-
-### Technical Features
-- Standalone Angular 17 components (no NgModules)
-- TypeScript strict mode
-- Tailwind CSS for styling
-- Custom form components with two-way binding
-- SEO optimization with meta tags and structured data
-- Performance optimization with lazy loading
-- CI/CD pipeline with GitHub Actions
-- Automated testing and deployment
+---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-
 - Node.js 18+ and npm
 - Angular CLI 17+
 
-### Installation
+### Installation & Development
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/lost-yeti-angular.git
-
-# Navigate to project directory
-cd lost-yeti-angular
+git clone https://github.com/Mostafa-SAID7/Naar-Noor.git
+cd Naar-Noor
 
 # Install dependencies
 npm install
 
 # Start development server
 npm start
+# Opens at http://localhost:4200
 ```
 
-Visit `http://localhost:4200` in your browser.
-
-### Build for Production
+### Production Build
 
 ```bash
-# Create production build
+# Create optimized production build
 npm run build:prod
 
-# Output will be in dist/lost-yeti
+# Output will be in dist/lost-yeti/
 ```
+
+---
+
+## 🏗️ Tech Stack
+
+| Category | Technology | Version | Purpose |
+|----------|------------|---------|---------|
+| **Framework** | Angular | 17.x | Standalone components architecture |
+| **Language** | TypeScript | 5.5.x | Type-safe development |
+| **Styling** | Tailwind CSS | 3.4.x | Utility-first CSS framework |
+| **Icons** | Iconify | Latest | Comprehensive icon library |
+| **Deployment** | Vercel | - | Serverless deployment platform |
+| **CI/CD** | GitHub Actions | - | Automated workflows |
+
+> 📋 **Full tech stack details:** [docs/TECHNOLOGIES.md](./docs/TECHNOLOGIES.md)
+
+---
+
+## ✨ Features Overview
+
+### 🎬 Core Features
+- **Hero Section** - Full-screen with embedded reservation system
+- **Custom Components** - Interactive calendar and dropdown components  
+- **Responsive Navigation** - Mobile-first design with smooth animations
+- **Menu Display** - Dynamic categorized menu items
+- **Chef Profiles** - Team showcase with professional bios
+- **Customer Reviews** - Testimonials with rating system
+- **Location Info** - Interactive location details with hours
+
+### 🔧 Technical Features
+- Standalone Angular 17 components (no NgModules)
+- Custom form components with two-way binding
+- Dropdown manager service for UI state management
+- Performance optimization with lazy loading
+- SEO optimization with structured data
+- PWA capabilities with manifest.json
+
+> 📋 **Complete feature documentation:** [docs/FEATURES.md](./docs/FEATURES.md)
+
+---
 
 ## 📚 Documentation
 
-Comprehensive documentation is available in the `/docs` folder:
+Our comprehensive documentation is organized in the `/docs` folder:
 
-- [📖 Project Setup](./docs/PROJECT_SETUP.md) - Installation and configuration
-- [🏗️ Structure](./docs/STRUCTURE.md) - Project architecture
-- [🎨 Styles](./docs/STYLES.md) - Styling guidelines
-- [🚀 Deployment](./docs/DEPLOYMENT.md) - Deployment instructions
-- [💻 Technologies](./docs/TECHNOLOGIES.md) - Tech stack details
-- [✨ Features](./docs/FEATURES.md) - Feature documentation
-- [🔒 Security](./docs/SECURITY.md) - Security policies
-- [📝 Changelog](./docs/CHANGELOG.md) - Version history
-- [🤝 Contributing](./docs/CONTRIBUTING.md) - Contribution guidelines
-- [📊 ERD](./docs/ERD.md) - Entity relationship diagram
-- [📋 Use Cases](./docs/USE_CASES.md) - User scenarios
+### 🚀 Getting Started
+- [📖 Project Setup](./docs/PROJECT_SETUP.md) - Installation and configuration guide
+- [🏗️ Project Structure](./docs/STRUCTURE.md) - Codebase architecture overview
+- [🚀 Deployment Guide](./docs/DEPLOYMENT.md) - Deploy to Vercel, Netlify, AWS, etc.
 
-## 🛠️ Technologies
+### 🎨 Development
+- [🎨 Styling Guidelines](./docs/STYLES.md) - Design system and Tailwind usage
+- [✨ Features Documentation](./docs/FEATURES.md) - Complete feature breakdown
+- [⚡ Performance Guide](./docs/PERFORMANCE.md) - Optimization techniques
 
-### Frontend
-- **Angular 17** - Standalone components architecture
-- **TypeScript 5.2** - Type-safe development
-- **Tailwind CSS** - Utility-first CSS framework
-- **Iconify** - Icon library
-- **Spline** - 3D animations
+### 🔧 Project Management  
+- [📊 Project Status](./docs/PROJECT_STATUS.md) - Current status and completed tasks
+- [🤖 Automation Guide](./docs/AUTOMATION.md) - GitHub workflows and scripts
+- [📝 Changelog](./docs/CHANGELOG.md) - Version history and updates
 
-### Development Tools
-- **Angular CLI** - Project scaffolding and build
-- **ESLint** - Code linting
-- **Prettier** - Code formatting
-- **Husky** - Git hooks
+### 🤝 Contributing
+- [🤝 Contributing Guidelines](./docs/CONTRIBUTING.md) - How to contribute
+- [📋 Code of Conduct](./docs/CODE_OF_CONDUCT.md) - Community guidelines
+- [🔒 Security Policy](./docs/SECURITY.md) - Security guidelines
 
-### CI/CD
-- **GitHub Actions** - Automated workflows
-- **Docker** - Containerization
-- **Nginx** - Web server
+---
+
+## 🌍 SEO & Market Focus
+
+### Target Market: Egypt 🇪🇬
+- **Location**: Cairo, Egypt
+- **Languages**: English & Arabic (العربية)
+- **Keywords**: Optimized for Egyptian restaurant searches
+
+### SEO Features
+- Bilingual meta tags and descriptions
+- Schema.org structured data (Restaurant + LocalBusiness)
+- Open Graph and Twitter Card optimization
+- Sitemap.xml and robots.txt configured
+- Egyptian market keyword optimization
+
+---
+
+## 🚀 Deployment Status
+
+### Production Environment
+- **Live URL**: [https://naar222noor.vercel.app](https://naar222noor.vercel.app)
+- **Platform**: Vercel (Auto-deploy from main branch)
+- **Status**: ✅ Production Ready
+- **Performance**: Lighthouse Score 90+
+
+### Development Workflow
+```bash
+# Development commands
+npm start                    # Start dev server
+npm run build:prod          # Production build  
+npm run docs:update         # Update documentation
+
+# Deployment (automatic)
+git push origin main        # Triggers Vercel deployment
+```
+
+---
+
+## 📊 Performance Metrics
+
+| Metric | Target | Current Status |
+|--------|--------|----------------|
+| **Bundle Size** | < 3.5MB | ✅ 2.3MB (55% reduction) |
+| **First Contentful Paint** | < 1.5s | ✅ Optimized |
+| **Lighthouse Performance** | 90+ | ✅ Achieved |
+| **Lighthouse SEO** | 95+ | ✅ Achieved |
+| **Mobile Friendly** | Yes | ✅ Responsive |
+
+---
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guidelines](./docs/CONTRIBUTING.md) and [Code of Conduct](./docs/CODE_OF_CONDUCT.md).
+We welcome contributions! Here's how to get started:
 
-### Quick Contribution Steps
+1. **Fork** the repository
+2. **Create** your feature branch (`git checkout -b feature/AmazingFeature`)
+3. **Commit** your changes (`git commit -m 'Add some AmazingFeature'`)
+4. **Push** to the branch (`git push origin feature/AmazingFeature`)
+5. **Open** a Pull Request
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+> 📋 **Detailed guidelines:** [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md)
+
+---
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👥 Contributors
+---
 
-See [CONTRIBUTORS.md](./docs/CONTRIBUTORS.md) for the list of contributors.
+## 📞 Contact & Support
 
-## 📞 Contact
+### 🏪 Restaurant Information
+- **Website**: [naar222noor.vercel.app](https://naar222noor.vercel.app)
+- **Location**: Cairo, Egypt
+- **Hours**: 12:00 PM - 11:00 PM (Closed Mondays)
 
-- Website: [naarnooor.com](https://www.naarnooor.com)
-- Email: hello@naarnooor.com
-- Phone: +44 (0) 1481 123456
+### 💻 Development Support
+- **Repository**: [github.com/Mostafa-SAID7/Naar-Noor](https://github.com/Mostafa-SAID7/Naar-Noor)
+- **Issues**: [Report bugs or request features](https://github.com/Mostafa-SAID7/Naar-Noor/issues)
+- **Discussions**: [Community discussions](https://github.com/Mostafa-SAID7/Naar-Noor/discussions)
+
+---
 
 ## 🙏 Acknowledgments
 
-- Design inspiration from modern restaurant websites
-- Icons by [Iconify](https://iconify.design/)
-- Fonts by [Google Fonts](https://fonts.google.com/)
-- 3D animations by [Spline](https://spline.design/)
+- **Design Inspiration**: Modern restaurant websites and Himalayan culture
+- **Icons**: [Iconify Design](https://iconify.design/) icon library
+- **Fonts**: [Google Fonts](https://fonts.google.com/) (Forum & Open Sans)
+- **Deployment**: [Vercel](https://vercel.com/) for seamless hosting
 
 ---
 
 <div align="center">
-Made with ❤️ by Naar & Noor Team
+
+**Made with ❤️ for authentic Himalayan cuisine lovers**
+
+*Naar & Noor (نار ونور) - Where Fire Meets Flavor*
+
 </div>
 
 
