@@ -227,7 +227,24 @@ jobs:
             Docker: ${{ needs.docker-release.result }}
             
             View release: https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }}
-          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+          custom_payload: |
+            {
+              text: `🎉 New Release: ${process.env.AS_VERSION}`,
+              blocks: [
+                {
+                  type: 'section',
+                  text: {
+                    type: 'mrkdwn',
+                    text: `*Release ${process.env.AS_VERSION}*\nRelease: ${process.env.AS_RELEASE}\nDocker: ${process.env.AS_DOCKER}\n<https://github.com/${{ github.repository }}/releases/tag/${process.env.AS_VERSION}|View Release>`
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+          AS_VERSION: ${{ github.ref_name }}
+          AS_RELEASE: ${{ needs.create-release.result }}
+          AS_DOCKER: ${{ needs.docker-release.result }}
         if: always() && secrets.SLACK_WEBHOOK != ''
       
       - name: Create announcement issue

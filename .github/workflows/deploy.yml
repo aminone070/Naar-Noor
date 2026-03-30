@@ -256,8 +256,28 @@ jobs:
             AWS S3: ${{ needs.deploy-aws-s3.result }}
             GitHub Pages: ${{ needs.deploy-github-pages.result }}
             Smoke Tests: ${{ needs.smoke-test.result }}
-          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
-        if: always()
+          custom_payload: |
+            {
+              text: `Deployment Status: ${process.env.AS_STATUS}`,
+              blocks: [
+                {
+                  type: 'section',
+                  text: {
+                    type: 'mrkdwn',
+                    text: `*Deployment Status*\nVercel: ${process.env.AS_VERCEL}\nNetlify: ${process.env.AS_NETLIFY}\nAWS S3: ${process.env.AS_AWS}\nGitHub Pages: ${process.env.AS_PAGES}\nSmoke Tests: ${process.env.AS_SMOKE}`
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+          AS_STATUS: ${{ job.status }}
+          AS_VERCEL: ${{ needs.deploy-vercel.result }}
+          AS_NETLIFY: ${{ needs.deploy-netlify.result }}
+          AS_AWS: ${{ needs.deploy-aws-s3.result }}
+          AS_PAGES: ${{ needs.deploy-github-pages.result }}
+          AS_SMOKE: ${{ needs.smoke-test.result }}
+        if: always() && secrets.SLACK_WEBHOOK != ''
       
       - name: Create GitHub Release
         uses: actions/create-release@v1
