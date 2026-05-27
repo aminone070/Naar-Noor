@@ -11,6 +11,7 @@ public class Order : BaseEntity
     public string? Notes { get; set; }
     public OrderType Type { get; set; }
     public string? DeliveryAddress { get; set; }
+    public string? TableReservationName { get; set; }
     public OrderStatus Status { get; set; } = OrderStatus.Pending;
     public decimal TotalAmount { get; set; }
     public List<OrderItem> Items { get; set; } = new();

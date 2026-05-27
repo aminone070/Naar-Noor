@@ -9,6 +9,7 @@ public record CreateOrderCommand(
     string? Notes,
     string Type,
     string? DeliveryAddress,
+    string? TableReservationName,
     List<OrderItemRequest> Items
 ) : IRequest<Guid>;
 

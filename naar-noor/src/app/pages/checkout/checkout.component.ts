@@ -15,15 +15,21 @@ import { SeoService } from '../../services/seo.service';
   templateUrl: './checkout.component.html'
 })
 export class CheckoutComponent implements OnInit {
-  private readonly fb = inject(FormBuilder);
-  readonly cart = inject(CartService);
-  private readonly api = inject(ApiService);
+  private readonly fb     = inject(FormBuilder);
+  readonly cart           = inject(CartService);
+  private readonly api    = inject(ApiService);
   private readonly router = inject(Router);
-  private readonly toast = inject(ToastService);
-  private readonly seo = inject(SeoService);
+  private readonly toast  = inject(ToastService);
+  private readonly seo    = inject(SeoService);
 
   form!: FormGroup;
   submitting = false;
+
+  readonly orderTypes = [
+    { value: 'collection', label: 'Takeaway',  sub: 'Pick up in store',           icon: 'solar:bag-5-linear' },
+    { value: 'delivery',   label: 'Delivery',  sub: 'Delivered to your door',     icon: 'solar:delivery-linear' },
+    { value: 'dine-in',    label: 'Dine-in',   sub: 'Eat at your reserved table', icon: 'solar:tea-cup-linear' }
+  ];
 
   ngOnInit(): void {
     this.seo.setCheckout();
@@ -32,31 +38,45 @@ export class CheckoutComponent implements OnInit {
       return;
     }
     this.form = this.fb.group({
-      customerName: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', [Validators.required, Validators.minLength(7)]],
-      type: ['collection', Validators.required],
-      deliveryAddress: [''],
-      notes: ['', Validators.maxLength(300)]
+      customerName:         ['', [Validators.required, Validators.minLength(2)]],
+      email:                ['', [Validators.required, Validators.email]],
+      phoneNumber:          ['', [Validators.required, Validators.minLength(7)]],
+      type:                 ['collection', Validators.required],
+      deliveryAddress:      [''],
+      tableReservationName: [''],
+      notes:                ['', Validators.maxLength(300)]
     });
 
     this.form.get('type')!.valueChanges.subscribe(val => {
-      const addr = this.form.get('deliveryAddress')!;
+      const addr  = this.form.get('deliveryAddress')!;
+      const table = this.form.get('tableReservationName')!;
+
+      addr.clearValidators();
+      addr.setValue('');
+      table.clearValidators();
+      table.setValue('');
+
       if (val === 'delivery') {
         addr.setValidators([Validators.required, Validators.minLength(5)]);
-      } else {
-        addr.clearValidators();
-        addr.setValue('');
+      } else if (val === 'dine-in') {
+        table.setValidators([Validators.required, Validators.minLength(2)]);
       }
+
       addr.updateValueAndValidity();
+      table.updateValueAndValidity();
     });
   }
 
-  get isDelivery(): boolean {
-    return this.form?.get('type')?.value === 'delivery';
-  }
+  get orderType(): string { return this.form?.get('type')?.value ?? ''; }
+  get isDelivery(): boolean { return this.orderType === 'delivery'; }
+  get isDineIn():   boolean { return this.orderType === 'dine-in'; }
 
   get f() { return this.form.controls; }
+
+  err(field: string): boolean {
+    const c = this.form.get(field);
+    return !!(c && c.invalid && c.touched);
+  }
 
   submit(): void {
     if (this.form.invalid) {
@@ -66,17 +86,18 @@ export class CheckoutComponent implements OnInit {
     this.submitting = true;
     const val = this.form.value;
     this.api.createOrder({
-      customerName: val.customerName,
-      email: val.email,
-      phoneNumber: val.phoneNumber,
-      notes: val.notes || undefined,
-      type: val.type,
-      deliveryAddress: val.deliveryAddress || undefined,
+      customerName:         val.customerName,
+      email:                val.email,
+      phoneNumber:          val.phoneNumber,
+      notes:                val.notes || undefined,
+      type:                 val.type,
+      deliveryAddress:      val.deliveryAddress  || undefined,
+      tableReservationName: val.tableReservationName || undefined,
       items: this.cart.items().map(i => ({
-        menuItemId: i.menuItemId,
+        menuItemId:   i.menuItemId,
         menuItemName: i.name,
-        unitPrice: i.price,
-        quantity: i.quantity
+        unitPrice:    i.price,
+        quantity:     i.quantity
       }))
     }).subscribe({
       next: (res) => {

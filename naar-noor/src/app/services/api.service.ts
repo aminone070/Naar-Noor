@@ -54,8 +54,9 @@ export interface CreateOrderRequest {
   email: string;
   phoneNumber: string;
   notes?: string;
-  type: 'collection' | 'delivery';
+  type: 'collection' | 'delivery' | 'dine-in';
   deliveryAddress?: string;
+  tableReservationName?: string;
   items: OrderItemRequest[];
 }
 

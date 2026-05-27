@@ -16,28 +16,34 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Gui
 
     public async Task<Guid> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
     {
-        var type = request.Type.ToLowerInvariant() == "delivery" ? OrderType.Delivery : OrderType.Collection;
+        var type = request.Type.ToLowerInvariant() switch
+        {
+            "delivery" => OrderType.Delivery,
+            "dine-in"  => OrderType.DineIn,
+            _          => OrderType.Collection
+        };
 
         var items = request.Items.Select(i => new OrderItem
         {
-            MenuItemId = i.MenuItemId,
+            MenuItemId   = i.MenuItemId,
             MenuItemName = i.MenuItemName,
-            UnitPrice = i.UnitPrice,
-            Quantity = i.Quantity
+            UnitPrice    = i.UnitPrice,
+            Quantity     = i.Quantity
         }).ToList();
 
         var total = items.Sum(i => i.UnitPrice * i.Quantity);
 
         var order = new Order
         {
-            CustomerName = request.CustomerName,
-            Email = request.Email,
-            PhoneNumber = request.PhoneNumber,
-            Notes = request.Notes,
-            Type = type,
-            DeliveryAddress = request.DeliveryAddress,
-            TotalAmount = total,
-            Items = items
+            CustomerName         = request.CustomerName,
+            Email                = request.Email,
+            PhoneNumber          = request.PhoneNumber,
+            Notes                = request.Notes,
+            Type                 = type,
+            DeliveryAddress      = request.DeliveryAddress,
+            TableReservationName = request.TableReservationName,
+            TotalAmount          = total,
+            Items                = items
         };
 
         _context.Orders.Add(order);
