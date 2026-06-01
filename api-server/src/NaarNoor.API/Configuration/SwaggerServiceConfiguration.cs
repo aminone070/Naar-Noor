@@ -1,5 +1,4 @@
 using Microsoft.OpenApi.Models;
-using System.Reflection;
 
 namespace NaarNoor.API.Configuration;
 
@@ -10,27 +9,20 @@ public static class SwaggerServiceConfiguration
 {
     public static void AddSwaggerServiceConfiguration(this IServiceCollection services)
     {
-        services.AddSwaggerGen(c =>
+        services.AddSwaggerGen(options =>
         {
-            c.SwaggerDoc("v1", new OpenApiInfo
+            // Register API documentation
+            options.SwaggerDoc("v1", new OpenApiInfo
             {
                 Title = "Naar & Noor API",
                 Version = "v1",
-                Description = "Restaurant management API - Authentic Himalayan cuisine",
+                Description = "Restaurant management API with menu, chefs, reservations, orders, reviews, and contact endpoints",
                 Contact = new OpenApiContact
                 {
                     Name = "Naar & Noor",
                     Url = new Uri("https://naar-noor.vercel.app")
                 }
             });
-
-            // Include XML comments for better endpoint documentation
-            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-            if (File.Exists(xmlPath))
-            {
-                c.IncludeXmlComments(xmlPath);
-            }
         });
     }
 }
