@@ -8,13 +8,13 @@ FROM node:18-alpine AS builder
 WORKDIR /app
 
 # Copy package files
-COPY naar-noor/package*.json ./
+COPY package*.json ./
 
 # Install dependencies using npm ci (clean install)
 RUN npm ci
 
 # Copy source code
-COPY naar-noor/ .
+COPY . .
 
 # Build production bundle with Angular CLI
 RUN npm run build
@@ -32,10 +32,10 @@ RUN rm -rf ./*
 COPY --from=builder /app/dist/naar-noor/browser .
 
 # Copy custom nginx configuration (references container hostnames)
-COPY naar-noor/nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy health check script
-COPY naar-noor/health-check.sh /app/health-check.sh
+COPY health-check.sh /app/health-check.sh
 RUN chmod +x /app/health-check.sh
 
 # Metadata labels for container identification

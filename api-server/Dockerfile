@@ -8,11 +8,11 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS builder
 WORKDIR /app
 
 # Copy solution file
-COPY api-server/NaarNoor.sln .
+COPY NaarNoor.sln .
 
 # Copy project files
-COPY api-server/src ./src
-COPY api-server/tests ./tests
+COPY src ./src
+COPY tests ./tests
 
 # Restore dependencies
 RUN dotnet restore NaarNoor.sln

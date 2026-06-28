@@ -62,7 +62,7 @@ jobs:
 
       - name: Extract metadata
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: ${{ env.REGISTRY }}/${{ steps.lowercase.outputs.image_name }}-backend
           tags: |
@@ -72,7 +72,7 @@ jobs:
 
       - name: Build and push backend Docker image
         if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: ./api-server
           file: ./api-server/Dockerfile
@@ -140,7 +140,7 @@ jobs:
 
       - name: Extract metadata
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: ${{ env.REGISTRY }}/${{ steps.lowercase.outputs.image_name }}-frontend
           tags: |
@@ -150,7 +150,7 @@ jobs:
 
       - name: Build and push frontend Docker image
         if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: ./naar-noor
           file: ./naar-noor/Dockerfile
